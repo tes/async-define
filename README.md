@@ -3,7 +3,7 @@ asyncDefine
 asyncDefine is a simple function that coordinates the execution of aynchronous scripts.
 
 The issue
-=========
+---------
 Sometime you want to split a script in more than one bundle. For caching for example, or for sharing a common library between two or more scripts running in the same page.
 What you can easily do is this:
 
@@ -26,7 +26,7 @@ But you can't do this (it will fail sometimes):
     <script src="script2.js" async></script>
 
 Using asyncDefine
-=================
+-----------------
 asyncDefine wraps your scripts and insure the execution order without polluting the global namespace.
 This will be script1.js
 
@@ -42,7 +42,7 @@ This will be script2.js
     });
 
 Syntax
-======
+------
 The syntax resemble a lot AMD (http://requirejs.org/docs/api.html#define). There is only a function:
 
     defineAsync(name, [array of dependencies], func);
@@ -50,16 +50,16 @@ The syntax resemble a lot AMD (http://requirejs.org/docs/api.html#define). There
 The name and the list of dependencies are optionals. The function will be executed and it will receive the dependencies as arguments.
 
 What is NOT
-===========
+-----------
 AsyncDefine is not a module definition system, it doesn't trigger the download of the dependencies, it doesn't require, include or enforce any kind of package manager.
 
 How to use with browserify
-==========================
+--------------------------
 AsyncDefine is compatible with plain javascript, browserify and ES2015 modules. Here's an example with Browserify.
 The first bundle will contain jquery:
 
     var $ = require('jquery');
-    var asyncDefine = require('../lib/asyncDefine');
+    var asyncDefine = require('asyncDefine');
 
     asyncDefine('jquery', function (){
       return $;
@@ -68,7 +68,7 @@ The first bundle will contain jquery:
 The second bundle will contain react:
 
     var React = require('react');
-    var asyncDefine = require('../lib/asyncDefine');
+    var asyncDefine = require('asyncDefine');
 
     asyncDefine('react', function (){
       return React;
@@ -77,7 +77,7 @@ The second bundle will contain react:
 The third bundle will contain react-dom:
 
     var ReactDOM = require('react-dom');
-    var asyncDefine = require('../lib/asyncDefine');
+    var asyncDefine = require('asyncDefine');
 
     asyncDefine('react-dom', function (){
       return ReactDOM;
@@ -85,7 +85,7 @@ The third bundle will contain react-dom:
 
 The main file will depend on the others:
 
-    var asyncDefine = require('../lib/asyncDefine');
+    var asyncDefine = require('asyncDefine');
 
     asyncDefine(['jquery', 'react', 'react-dom'], function ($, React, ReactDOM){
       var $node = $('<div />').appendTo(document.body);
@@ -98,6 +98,25 @@ The main file will depend on the others:
       ReactDOM.render(
         React.createElement(Hello, null),
         node);
+    });
+
+As an alternative it is also possible to bundle a group of resources together in the same file:
+
+    var asyncDefine = require('asyncDefine');
+    var $ = require('jquery');
+    var React = require('react');
+    var ReactDOM = require('react-dom');
+
+    asyncDefine('jquery', function (){
+      return $;
+    });
+
+    asyncDefine('react', function (){
+      return React;
+    });
+
+    asyncDefine('react-dom', function (){
+      return ReactDOM;
     });
 
 Then you can put in the html:
