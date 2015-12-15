@@ -1,0 +1,27 @@
+{
+  "name": "async-define",
+  "version": "1.0.0",
+  "description": "Coordinate the execution of asynchronous scripts",
+  "main": "lib/asyncDefine.js",
+  "scripts": {
+    "test": "mocha tests/*.js",
+    "serve": "http-server -p 9090 demo",
+    "build:jquery": "browserify demo/jquery.js -o demo/dist/jquery.js",
+    "build:react": "browserify demo/react.js -o demo/dist/react.js",
+    "build:react-dom": "browserify demo/react-dom.js -o demo/dist/react-dom.js",
+    "build:main": "browserify demo/main.js -o demo/dist/main.js",
+    "build": "npm run build:jquery && npm run build:react && npm run build:react-dom && npm run build:main"
+  },
+  "repository": "git@github.com:tes/async-define.git",
+  "author": "Maurizio Lupo <maurizio.lupo@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "chai": "^1.10.0",
+    "http-server": "^0.8.5",
+    "jquery": "^2.1.4",
+    "mocha": "^2.1.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
+  }
+}
