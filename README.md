@@ -43,7 +43,7 @@ This will be script2.js
 
 Syntax
 ------
-The syntax resemble a lot AMD (http://requirejs.org/docs/api.html#define). There is only a function:
+The syntax resemble a lot AMD (http://requirejs.org/docs/api.html#define). There is only one function:
 
     defineAsync(name, [array of dependencies], func);
 
