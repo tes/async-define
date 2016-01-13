@@ -41,9 +41,22 @@ defineAsync(['script1'], function (script1){ // the array lists the dependencies
   // I execute the code and script1 will be defined
 });
 ```
+It is also protecting you for executing the same common libraries twice. For example:
+```js
+defineAsync('script1', function (){
+  // will I be executed ?
+  return;
+});
+defineAsync('script1', function (){
+  // will I be executed ?
+  return;
+});
+```
+In the previous example only one of these will be executed.
+
 Syntax
 ------
-The syntax resemble a lot AMD (http://requirejs.org/docs/api.html#define). There is only one function:
+The syntax resembles a lot AMD (http://requirejs.org/docs/api.html#define). There is only one function:
 ```js
 defineAsync(name, [array of dependencies], func);
 ```
@@ -127,3 +140,4 @@ Then you can put in the html:
 <script async src="dist/jquery.js"></script>
 ```
 All will be downloaded asynchronously with the maximum performances!
+There is also a transformer available https://github.com/tes/browserify-async-define

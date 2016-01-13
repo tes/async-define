@@ -59,5 +59,28 @@ describe("asyncDefine", function () {
 
   });
 
+  it("mustn't execute the same dep twice", function (done) {
+    var counter = 0;
+    setTimeout(function (){
+      asyncDefine("duplicated", function (){
+        counter++;
+        return "duplicated1";
+      });
+    }, 10);
+    
+    setTimeout(function (){
+      asyncDefine("duplicated", function (hello){
+        counter++;
+        return "duplicated2";
+      });      
+    }, 20);
+
+    setTimeout(function (){
+      assert.equal(counter, 1);
+      done();
+    }, 50);
+    
+  });
+
 
 });
