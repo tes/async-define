@@ -12,7 +12,10 @@
     "build:react": "browserify demo/react.js -o demo/dist/react.js",
     "build:react-dom": "browserify demo/react-dom.js -o demo/dist/react-dom.js",
     "build:main": "browserify demo/main.js -o demo/dist/main.js",
-    "build:demo": "npm run build && npm run build:jquery && npm run build:react && npm run build:react-dom && npm run build:main"
+    "build:demo": "npm run build && npm run build:jquery && npm run build:react && npm run build:react-dom && npm run build:main",
+    "release:major": "./node_modules/.bin/npm-release major",
+    "release:minor": "./node_modules/.bin/npm-release minor",
+    "release:patch": "./node_modules/.bin/npm-release patch"
   },
   "bin": {
     "async-define-bundle": "bin/async-define-bundle.js"
@@ -27,11 +30,12 @@
     "jquery": "^2.1.4",
     "mocha": "^2.1.0",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "uglifyjs": "^2.4.10",
+    "npm-release": "^1.0.0"
   },
   "dependencies": {
     "handlebars": "^4.0.5",
-    "minimist": "^1.2.0",
-    "uglifyjs": "^2.4.10"
+    "minimist": "^1.2.0"
   }
 }
