@@ -141,3 +141,47 @@ Then you can put in the html:
 ```
 All will be downloaded asynchronously with the maximum performances!
 There is also a transformer available https://github.com/tes/browserify-async-define
+
+asyncDefineBundle
+=================
+This is a command line/API available to wrap scripts into asyncDefine. Can be used as additional build steps in webpack/browserify/xyz, and allows to load bundles asynchronously.
+
+Here are the options:
+
+* -name (-n): name of this bundle (optional)
+* -import (-i): symbols to import (optional)
+* -export (-e): symbols to export (optional)
+* -minified (-m): use this if you want to use a minified version of async-define
+* -fragment (-f): (advanced) the fragment to use (default to asyncDefine wrapper)
+* -script (-s): the path of the script to wrap into asyncDefine
+Example:
+```
+async-define-bundle.js -n bundle3 -s hello.js -i bundle1.x,bundle1.y,bundle2.z -e j
+```
+will produce:
+```js
+// ... async define bundle
+asyncDefine("bundle3", ["bundle1" ,"bundle2"], function (___bundle1 ,___bundle2) {
+      var x = ___bundle1.x;
+      var y = ___bundle1.y;
+      var z = ___bundle2.z;
+
+  console.log('hello world'); // this is the script
+
+  return {
+      j: j,
+  };
+});
+```
+There is an equivalent module:
+```js
+var asyncDefineBundle = require('async-define/src/async-define-bundle');
+console.log(asyncDefineBundle({
+  fragmentPath: fragmentPath, // (advanced) the fragment to use (default to asyncDefine wrapper)
+  bundleName: bundleName, // name of this bundle (optional)
+  importVar: importVar, // an object like {bundle1: ['x', 'y'], bundle2: ['z']}
+  exportVar: exportVar, // a list of exported symbols ['j']
+  script: script, // the script to wrap into asyncDefine (a string)
+  minified: minified, // use this if you want to use a minified version of async-define
+}));
+```

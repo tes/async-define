@@ -1,0 +1,15 @@
+asyncDefine({{#if bundleName}}"{{bundleName}}", {{/if}}{{#if depsStr}}[{{{depsStr}}}], {{/if}}function ({{{depsArgs}}}) {
+  {{#each importVar}}
+    {{#each this}}
+      var {{this}} = ___{{@../key}}.{{this}};
+    {{/each}}
+  {{/each}}
+
+  {{{script}}}
+
+  return {
+    {{#each exportVar}}
+      {{this}}: {{this}},
+    {{/each}}
+  };
+});
