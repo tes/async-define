@@ -7,7 +7,7 @@
     "prepublish": "npm run build",
     "test": "npm run build && mocha tests/*.js",
     "serve": "http-server -p 9090 demo",
-    "build": "uglifyjs templates/main.hbs -m -r asyncDefine -c -o templates/main-min.hbs && bin/async-define-bundle.js -f=templates/umd.hbs > lib/asyncDefine.js",
+    "build": "bin/async-define-bundle.js -f=templates/umd.js > lib/asyncDefine.js",
     "build:jquery": "browserify demo/jquery.js -o demo/dist/jquery.js",
     "build:react": "browserify demo/react.js -o demo/dist/react.js",
     "build:react-dom": "browserify demo/react-dom.js -o demo/dist/react-dom.js",

@@ -8,7 +8,6 @@ var asyncDefineBundle = require('../src/async-define-bundle');
 var argv = require('minimist')(process.argv.slice(2));
 
 
-var minified = argv.minified || argv.m;
 var fragmentPath = argv.fragment || argv.f;
 var importVar = argv.import || argv.i;
 var exportVar = argv.export || argv.e;
@@ -23,6 +22,7 @@ if (!fragmentPath && !scriptPath) {
 }
 
 var script = scriptPath ? fs.readFileSync(scriptPath, {encoding: 'utf8'}) : '';
+var scriptName = scriptPath ? path.basename(scriptPath) : '';
 
 console.log(asyncDefineBundle({
   fragmentPath: fragmentPath,
@@ -30,7 +30,7 @@ console.log(asyncDefineBundle({
   importVar: importVar,
   exportVar: exportVar,
   script: script,
-  minified: minified,
+  scriptName: scriptName
 }));
 process.exit();
 
