@@ -54,6 +54,21 @@ defineAsync('script1', function (){
 ```
 In the previous example only one of these will be executed.
 
+If one of your library exposes multiple items using an object, you can easily inject these properties in a module:
+```js
+defineAsync('tools', function (){
+  return {
+    hammer: 'hammer',
+    spade: 'spade',
+    drill: 'drill',
+  };
+});
+
+defineAsync(['tools|hammer'], function (hammer){
+  console.log('Using an ', hammer);
+});
+```
+
 Syntax
 ------
 The syntax resembles a lot AMD (http://requirejs.org/docs/api.html#define). There is only one function:

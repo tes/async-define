@@ -5,11 +5,16 @@
 
   function getDepsArray(depNames) {
     var i,
+      tmp, depNS, depProp,
       len = depNames.length,
       deps = [];
-    for (i = 0; i < len; i++){
-      if (depNames[i] in cached_dependencies){
-        deps.push(cached_dependencies[depNames[i]]);
+
+    for (i = 0; i < len; i++) {
+      tmp = depNames[i].split('|');
+      depNS = tmp[0];
+      depProp = tmp[1];
+      if (depNS in cached_dependencies){
+        deps.push(depProp ? cached_dependencies[depNS][depProp] : cached_dependencies[depNS]);
       }
       else {
         return;
