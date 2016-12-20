@@ -1,6 +1,6 @@
 {
   "name": "async-define",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Coordinate the execution of asynchronous scripts",
   "main": "lib/asyncDefine.js",
   "scripts": {
