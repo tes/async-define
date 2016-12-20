@@ -1,6 +1,6 @@
 if (typeof exports === 'object'){
-  module.exports = asyncDefine;
+  module.exports = define;
 }
 else{
-  this.asyncDefine = asyncDefine;
+  this.asyncDefine = define;
 }

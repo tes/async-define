@@ -1,4 +1,4 @@
-asyncDefine({{#if bundleName}}"{{bundleName}}", {{/if}}{{#if depsStr}}[{{{depsStr}}}], {{/if}}function ({{{depsArgs}}}) {
+define({{#if bundleName}}"{{bundleName}}", {{/if}}{{#if depsStr}}[{{{depsStr}}}], {{/if}}function ({{{depsArgs}}}) {
   {{#each importVar}}
     {{#each this}}
       var {{this}} = ___{{@../key}}.{{this}};
