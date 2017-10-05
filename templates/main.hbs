@@ -96,8 +96,8 @@
   }
 
   function ie(moduleName, iecb) {
-    var script = document.querySelector('script#' + moduleName');
-    var link = document.querySelector('link#' + moduleName');
+    var script = document.querySelector('script#' + moduleName);
+    var link = document.querySelector('link#' + moduleName);
     if (!script && link) {
       var src = link.href;
       script = document.createElement('script');
