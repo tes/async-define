@@ -13,6 +13,7 @@ var importVar = argv.import || argv.i;
 var exportVar = argv.export || argv.e;
 var bundleName = argv.name || argv.n;
 var scriptPath = argv.script || argv.s;
+var hasSourceMaps = argv.sourcemaps;
 
 exportVar = exportVar ? exportVar.split(',') : [];
 importVar = importVar ? createMap(importVar.split(',')) : {};
@@ -30,8 +31,10 @@ console.log(asyncDefineBundle({
   importVar: importVar,
   exportVar: exportVar,
   script: script,
-  scriptName: scriptName
+  scriptName: scriptName,
+  hasSourceMaps: typeof hasSourceMaps !== 'undefined',
 }));
+
 process.exit();
 
 function error(msg) {

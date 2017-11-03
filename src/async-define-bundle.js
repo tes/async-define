@@ -24,6 +24,7 @@ function asyncDefineBundle(opts) {
   var exportVar = opts.exportVar;
   var script = opts.script;
   var scriptName = opts.scriptName;
+  var hasSourceMaps = opts.hasSourceMaps;
 
   var mainTemplate = '../templates/main.hbs';
   var templateStr = fs.readFileSync(path.join(__dirname, mainTemplate), {encoding: 'utf8'});
@@ -47,12 +48,16 @@ function asyncDefineBundle(opts) {
     s = magicTemplate(s, fragment);
     s = magicTemplate(s, templateStr);
 
-    var map = s.generateMap({
-      source: scriptName,
-      file: scriptName + '.map',
-      includeContent: true
-    }); // generates a v3 sourcemap
-    return s.toString() + '\n//# sourceMappingURL=' + map.toUrl();
+    var output = s.toString();
+    if (hasSourceMaps) {
+      var map = s.generateMap({
+        source: scriptName,
+        file: scriptName + '.map',
+        includeContent: true
+      }); // generates a v3 sourcemap
+      output += '\n//# sourceMappingURL=' + map.toUrl();
+    }
+    return output;
   }
 
 

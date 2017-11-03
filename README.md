@@ -169,6 +169,7 @@ Here are the options:
 * -minified (-m): use this if you want to use a minified version of async-define
 * -fragment (-f): (advanced) the fragment to use (default to asyncDefine wrapper)
 * -script (-s): the path of the script to wrap into asyncDefine
+* -sourcemaps: produce sourcemaps
 Example:
 ```
 async-define-bundle.js -n bundle3 -s hello.js -i bundle1.x,bundle1.y,bundle2.z -e j
