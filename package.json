@@ -27,12 +27,12 @@
     "browserify": "^12.0.1",
     "chai": "^1.10.0",
     "http-server": "^0.8.5",
-    "jquery": "^2.1.4",
+    "jquery": "^3.3.1",
     "mocha": "^2.1.0",
+    "npm-release": "^1.0.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "uglifyjs": "^2.4.10",
-    "npm-release": "^1.0.0"
+    "uglifyjs": "^2.4.10"
   },
   "dependencies": {
     "handlebars": "^4.0.5",
