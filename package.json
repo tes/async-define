@@ -5,17 +5,14 @@
   "main": "lib/asyncDefine.js",
   "scripts": {
     "prepublish": "npm run build",
-    "test": "npm run build && mocha tests/*.js",
+    "test": "npm run build && mocha",
     "serve": "http-server -p 9090 demo",
     "build": "bin/async-define-bundle.js -f=templates/umd.js > lib/asyncDefine.js",
     "build:jquery": "browserify demo/jquery.js -o demo/dist/jquery.js",
     "build:react": "browserify demo/react.js -o demo/dist/react.js",
     "build:react-dom": "browserify demo/react-dom.js -o demo/dist/react-dom.js",
     "build:main": "browserify demo/main.js -o demo/dist/main.js",
-    "build:demo": "npm run build && npm run build:jquery && npm run build:react && npm run build:react-dom && npm run build:main",
-    "release:major": "./node_modules/.bin/npm-release major",
-    "release:minor": "./node_modules/.bin/npm-release minor",
-    "release:patch": "./node_modules/.bin/npm-release patch"
+    "build:demo": "npm run build && npm run build:jquery && npm run build:react && npm run build:react-dom && npm run build:main"
   },
   "bin": {
     "async-define-bundle": "bin/async-define-bundle.js"
@@ -28,8 +25,7 @@
     "chai": "^1.10.0",
     "http-server": "^0.11.1",
     "jquery": "^3.3.1",
-    "mocha": "^2.1.0",
-    "npm-release": "^1.0.0",
+    "mocha": "^5.2.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "uglifyjs": "^2.4.10"

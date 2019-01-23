@@ -27,40 +27,6 @@ describe("asyncDefine", function () {
     }, 50);
   });
 
-  describe('errors', function () {
-    var mochaErrorHandler;
-    before(function () {
-      mochaErrorHandler = global.onerror;
-      global.onerror = undefined;
-    });
-
-    after(function () {
-      global.onerror = mochaErrorHandler;
-    });
-
-    it("must manage errors", function (done) {
-      setTimeout(function (){
-        asyncDefine("broken", ['commondep'],  function () {
-          throw new Error('oh no');
-        });
-      }, 10);
-  
-      setTimeout(function (){
-        asyncDefine("ok", ['commondep'], function (commondep) {
-          assert.equal(commondep, 'commondep')
-          done();
-          return 'ok';
-        });
-      }, 20);
-  
-      setTimeout(function (){
-        asyncDefine("commondep", function () {
-          return 'commondep';
-        });
-      }, 30);
-    });
-  });
-
   it("must work with a graph of 4 nodes", function (done) {
     setTimeout(function (){
       asyncDefine("a", function (){
