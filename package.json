@@ -6,7 +6,6 @@
   "scripts": {
     "prepublish": "npm run build",
     "test": "npm run build && mocha",
-    "serve": "http-server -p 9090 demo",
     "build": "bin/async-define-bundle.js -f=templates/umd.js > lib/asyncDefine.js",
     "build:jquery": "browserify demo/jquery.js -o demo/dist/jquery.js",
     "build:react": "browserify demo/react.js -o demo/dist/react.js",
@@ -23,15 +22,14 @@
   "devDependencies": {
     "browserify": "^12.0.1",
     "chai": "^1.10.0",
-    "http-server": "^0.11.1",
-    "jquery": "^3.3.1",
+    "handlebars": "^4.1.2",
+    "jquery": "^3.4.0",
     "mocha": "^5.2.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {
-    "handlebars": "^4.1.0",
     "magic-string": "^0.22.4",
     "minimist": "^1.2.0"
   }
